@@ -51,7 +51,8 @@ export const MenuBackButtonUI = styled( Button )`
 `;
 
 export const MenuTitleUI = styled( Text )`
-	padding: 4px 0 4px 16px;
+	padding: ${ ( props ) =>
+		props.isRTL ? '4px 16px 4px 0' : '4px 0 4px 16px' };
 	margin-bottom: 8px;
 	color: ${ G2.gray[ 100 ] };
 `;

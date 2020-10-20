@@ -12,6 +12,7 @@ import { MenuTitleUI, MenuUI } from '../styles/navigation-styles';
 import NavigationBackButton from '../back-button';
 import { NavigationMenuContext } from './context';
 import { useNavigationTreeMenu } from './use-navigation-tree-menu';
+import { useRTL } from '../../utils/rtl';
 
 export default function NavigationMenu( props ) {
 	const {
@@ -26,6 +27,7 @@ export default function NavigationMenu( props ) {
 	useNavigationTreeMenu( props );
 	const { activeMenu } = useNavigationContext();
 	const isActive = activeMenu === menu;
+	const isRTL = useRTL();
 
 	const classes = classnames( 'components-navigation__menu', className );
 
@@ -58,6 +60,7 @@ export default function NavigationMenu( props ) {
 						as="h2"
 						className="components-navigation__menu-title"
 						variant="subtitle"
+						isRTL={ isRTL }
 					>
 						{ title }
 					</MenuTitleUI>
