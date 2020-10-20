@@ -7,7 +7,7 @@ import { noop } from 'lodash';
 /**
  * WordPress dependencies
  */
-import { Icon, chevronRight } from '@wordpress/icons';
+import { Icon, chevronLeft, chevronRight } from '@wordpress/icons';
 
 /**
  * Internal dependencies
@@ -17,6 +17,7 @@ import { useNavigationContext } from '../context';
 import { ItemBadgeUI, ItemTitleUI, ItemUI } from '../styles/navigation-styles';
 import { useNavigationTreeItem } from './use-navigation-tree-item';
 import { useNavigationMenuContext } from '../menu/context';
+import { useRTL } from '../../utils/rtl';
 
 export default function NavigationItem( props ) {
 	const {
@@ -33,6 +34,7 @@ export default function NavigationItem( props ) {
 	useNavigationTreeItem( props );
 	const { activeItem, setActiveMenu } = useNavigationContext();
 	const { isActive } = useNavigationMenuContext();
+	const isRTL = useRTL();
 
 	// If this item is in an inactive menu, then we skip rendering
 	// We need to make sure this component gets mounted though
@@ -52,6 +54,7 @@ export default function NavigationItem( props ) {
 
 		onClick( event );
 	};
+	const icon = isRTL ? chevronLeft : chevronRight;
 
 	return (
 		<ItemUI className={ classes }>
@@ -73,7 +76,7 @@ export default function NavigationItem( props ) {
 						</ItemBadgeUI>
 					) }
 
-					{ navigateToMenu && <Icon icon={ chevronRight } /> }
+					{ navigateToMenu && <Icon icon={ icon } /> }
 				</Button>
 			) }
 		</ItemUI>
