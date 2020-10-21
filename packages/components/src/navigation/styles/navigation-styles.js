@@ -59,7 +59,8 @@ export const MenuTitleUI = styled( Text )`
 
 export const GroupTitleUI = styled( Text )`
 	margin-top: 8px;
-	padding: 4px 0 4px 16px;
+	padding: ${ ( props ) =>
+		props.isRTL ? '4px 16px 4px 0' : '4px 0 4px 16px' };
 	text-transform: uppercase;
 	color: ${ G2.gray[ 100 ] };
 `;
